@@ -26,6 +26,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
     }
+    
+    override func viewWillLayoutSubviews() {
+        colorViews.forEach { $0.layer.cornerRadius = $0.frame.width / 2}
+    }
 
     @IBAction func startButtonDidTapped() {
         startButton.setTitle("NEXT", for: .normal)
@@ -47,10 +51,7 @@ class ViewController: UIViewController {
     }
     
     private func setupUI() {
-        colorViews.forEach {
-            $0.layer.cornerRadius = $0.frame.width / 2
-            $0.alpha = lightOff
-        }
+        colorViews.forEach { $0.alpha = lightOff }
         
         startButton.layer.cornerRadius = 10
         startButton.setTitle("START", for: .normal)
